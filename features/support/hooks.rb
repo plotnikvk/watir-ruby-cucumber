@@ -7,11 +7,11 @@ end
 After do |scenario|
     if (scenario.failed?)
         @browser.driver.save_screenshot "failed.jpg"
-        embed "failed.jpg", 'screenshots'
+        embed "failed.jpg", 'image/png'
     end
   @browser.quit
 end
 
 World PageObject::PageFactory
-PageObject.default_element_wait=30
-PageObject.default_page_wait=30
+PageObject.default_element_wait = 30
+PageObject.default_page_wait = 30
