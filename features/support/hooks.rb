@@ -1,14 +1,16 @@
 Before do |scenario|
- ENV['BROWSER'] = "chrome" if ENV['BROWSER'].nil?
- @browser = Watir::Browser.new ENV['BROWSER'].to_sym
- @browser.window.maximize
+  ENV['BROWSER'] = "chrome" if ENV['BROWSER'].nil?
+  @browser = Watir::Browser.new ENV['BROWSER'].to_sym
+  @browser.window.maximize
 end
 
 After do |scenario|
-    if (scenario.failed?)
-        @browser.driver.save_screenshot "failed.jpg"
-        embed "failed.jpg", 'image/png'
-    end
+  if (scenario.failed?)
+    puts(scenario.name)
+    puts(scenario.exception.message)
+    @browser.driver.save_screenshot "failed.jpg"
+    embed "failed.jpg", 'image/png'
+  end
   @browser.quit
 end
 
