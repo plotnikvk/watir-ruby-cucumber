@@ -5,12 +5,18 @@ Before do |scenario|
 end
 
 After do |scenario|
+  puts "После сценария"
   if (scenario.failed?)
+    puts "сценарий упал"
     puts(scenario.name)
     puts(scenario.exception.message)
-    @browser.driver.save_screenshot "failed.jpg"
-    embed "failed.jpg", 'image/png'
+    filename = "screenshots/error-#{Time.now.strftime('%Y-%m-%d_%H-%M-%S')}.png"
+    dirname = File.dirname(filename)
+    FileUtils.mkdir_p(dirname)
+    @browser.screenshot.save(filename)
+    embed(filename, 'image/png', filename)
   end
+  puts "Браузер закроется"
   @browser.quit
 end
 
