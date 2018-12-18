@@ -5,9 +5,7 @@ Before do |scenario|
 end
 
 After do |scenario|
-  puts "После сценария"
-  if (scenario.failed?)
-    puts "сценарий упал"
+  if scenario.failed?
     puts(scenario.name)
     puts(scenario.exception.message)
     filename = "screenshots/error-#{Time.now.strftime('%Y-%m-%d_%H-%M-%S')}.png"
@@ -16,7 +14,6 @@ After do |scenario|
     @browser.screenshot.save(filename)
     embed(filename, 'image/png', filename)
   end
-  puts "Браузер закроется"
   @browser.quit
 end
 
