@@ -6,15 +6,15 @@ end
 
 After do |scenario|
   if scenario.failed?
-    puts(scenario.name)
-    puts(scenario.exception.message)
+    puts scenario.name
+    puts scenario.exception.message
     filename = "screenshots/error-#{Time.now.strftime('%Y-%m-%d_%H-%M-%S')}.png"
     dirname = File.dirname(filename)
-    FileUtils.mkdir_p(dirname)
-    @browser.screenshot.save(filename)
-    embed(filename, 'image/png', filename)
+    FileUtils.mkdir_p dirname
+    @browser.screenshot.save filename
+    embed filename, 'image/png', filename
   end
-  @browser.quit
+  @browser.close
 end
 
 World PageObject::PageFactory
