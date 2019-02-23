@@ -19,11 +19,13 @@ When(/^выбрали производителя "([^"]*)"$/) do |manufacturer|
   on(MainPage).span_element(xpath: "//span[text()='#{manufacturer}']").wait_until_present.click
 end
 
-When(/^выбрали параметр фильтра "([^"]*)"$/) do |parametr|
+When(/^выбрали параметр фильтра "([^"]*)"$/) do |parametr| 
   count = 0
   begin
-    on(MainPage).show_by_element.wait_until_present.click
-    on(MainPage).span_element(text: "Показывать по #{parametr}").wait_until_present.click
+    if on(MainPage).show_by_element.present?
+      on(MainPage).show_by_element.wait_until_present.click
+      on(MainPage).span_element(text: "Показывать по #{parametr}").wait_until_present.click
+    end
   rescue Standard => _error
     raise "Не удалось выбрать параметр фильтра c #{count} попыток" if count == 5
 
