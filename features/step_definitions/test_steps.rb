@@ -53,3 +53,26 @@ When(/^проверили, что наименование товара соот
   p arr
   raise 'На данной странице нет искомого элемента' if arr.size < 1
 end
+
+When(/^выбрали сортировку "([^"]*)"$/) do |parametr|
+  on(MainPage).link_element(text: parametr).wait_until_present.click
+  sleep 5
+end
+
+When(/^проверили, что элементы на странице отсортированы верно$/) do
+  arr = []
+  on(MainPage).div_elements(xpath: "//div[@class='price']").each do |element|
+    new_arr = element.text.split('&nbsp;')
+    middle_var = if new_arr[0].include?(' ')
+                   new_arr[0].delete(' ')
+                 else
+                   new_arr[0]
+                 end
+    arr << middle_var.to_i             
+  end
+  i = 0
+  while i < arr.size - 1
+   raise 'Сортировка неверна' if arr[i] > arr[i + 1]
+   i += 1
+  end
+end
