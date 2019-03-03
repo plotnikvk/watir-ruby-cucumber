@@ -1,4 +1,4 @@
-Before do |scenario|
+Before do |_scenario|
 #   ENV['BROWSER'] = "chrome" if ENV['BROWSER'].nil?
 #   @browser = Watir::Browser.new ENV['BROWSER'].to_sym
 #   @browser.window.maximize
@@ -28,7 +28,6 @@ begin
       str if File.exist?(str)
     end
   end
-  p scenario.methods
   @browser.window.maximize
 rescue StandardError => e
   puts e.message
@@ -37,10 +36,8 @@ end
 end
 
 After do |scenario|
-p "fgdfhfdhdfhf"
-  if scenario.passed?
+  if scenario.failed?
     puts scenario.name
-    puts scenario.exception.message
     filename = "screenshots/error-#{Time.now.strftime('%Y-%m-%d_%H-%M-%S')}.png"
     dirname = File.dirname(filename)
     FileUtils.mkdir_p dirname
