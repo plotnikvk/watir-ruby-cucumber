@@ -48,10 +48,17 @@ When(/^ввели в поисковую строку запомненное зн
 end
 
 When(/^проверили, что наименование товара соответствует запомненному значению$/) do
+  sleep 5
   arr = []
-  on(MainPage).choosen_items_elements.each { |element| arr << element.text if element.text.eql?($remembered_text) }
-  p arr
-  raise 'На данной странице нет искомого элемента' if arr.size < 1
+  if on(MainPage).link_elements(text: $remembered_text).present?
+    n(MainPage).link_elements(text: $remembered_text).each { |element| arr << element.text if element.text.eql?($remembered_text) }
+    raise 'На данной странице нет искомого элемента' if arr.size < 1
+
+  else 
+    condition = on(MainPage).link_element(text: $remembered_text).wait_until_present.text.eql?($remembered_text)
+    raise 'На данной странице нет искомого элемента' unless condition
+      
+  end  
 end
 
 When(/^выбрали сортировку "([^"]*)"$/) do |parametr|
