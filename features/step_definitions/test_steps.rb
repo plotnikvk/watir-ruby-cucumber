@@ -55,7 +55,7 @@ When(/^проверили, что наименование товара соот
     raise 'На данной странице нет искомого элемента' if arr.size < 1
 
   else 
-    condition = on(MainPage).link_element(text: $remembered_text).wait_until_present.text.eql?($remembered_text)
+    condition = on(MainPage).h1_element(text: $remembered_text).wait_until_present.text.eql?($remembered_text)
     raise 'На данной странице нет искомого элемента' unless condition
       
   end  

@@ -1,4 +1,4 @@
-.png
-.bat
+*.png
+*.bat
 screenshots/
-.lock
+*.lock
