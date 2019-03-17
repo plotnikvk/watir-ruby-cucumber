@@ -1,12 +1,8 @@
-<<<<<<< HEAD
 Before do |_scenario|
 #   ENV['BROWSER'] = "chrome" if ENV['BROWSER'].nil?
 #   @browser = Watir::Browser.new ENV['BROWSER'].to_sym
 #   @browser.window.maximize
 # end
-=======
-Before do |scenario|
->>>>>>> 5d8d31788f8ca6d848bbb4952056e63b3344b039
 begin
   ####################################
   @url_hub = 'http://localhost:4444/wd/hub'
