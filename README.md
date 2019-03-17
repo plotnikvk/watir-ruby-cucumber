@@ -3,13 +3,12 @@
 ## Getting Started
 
       1. Ensure you have the chrome browser installed
-      3. Ensure you have ruby installed. File in 'file_for_work'
+      3. Ensure you have ruby + devkit installed. File in https://rubyinstaller.org/downloads/
       4. Ensure you have rubygems
       5. Write in concole :
-      gem install bundler
-      bundler install
-      5. Run 'bundle install'
-      6. Run 'cucumber'
+         - gem install bundler
+         - bundle install
+      5. Run s.bat
 
 ### Feedback
 
