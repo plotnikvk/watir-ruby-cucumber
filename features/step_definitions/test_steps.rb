@@ -25,6 +25,7 @@ When(/^выбрали параметр фильтра "([^"]*)"$/) do |parametr|
     if on(MainPage).show_by_element.present?
       on(MainPage).show_by_element.wait_until_present.click
       on(MainPage).span_element(text: "Показывать по #{parametr}").wait_until_present.click
+      on(MainPage).wait_until(45, "The element has not expect text!") { on(MainPage).show_by_element.text.eql?("Показывать по #{parametr}") }
     end
   rescue StandardError => _error
     raise "Не удалось выбрать параметр фильтра c #{count} попыток" if count == 5
@@ -35,7 +36,7 @@ When(/^выбрали параметр фильтра "([^"]*)"$/) do |parametr|
 end
 
 When(/^проверили, что элементов на странице "([^"]*)"$/) do |parametr|
-  on(MainPage).wait_until { on(MainPage).choosen_items_elements.size.eql?(parametr.to_i) }
+  on(MainPage).wait_until(45, "The page has not #{parametr} items!") { on(MainPage).choosen_items_elements.size.eql?(parametr.to_i) }
 end
 
 When(/^запомнили "([^"]*)" элемент в списке$/) do |number|
@@ -63,10 +64,10 @@ end
 
 When(/^выбрали сортировку "([^"]*)"$/) do |parametr|
   on(MainPage).link_element(text: parametr).wait_until_present.click
-  sleep 5
 end
 
 When(/^проверили, что элементы на странице отсортированы верно$/) do
+  sleep 5
   arr = []
   on(MainPage).div_elements(xpath: "//div[@class='price']").each do |element|
     new_arr = element.text.split('&nbsp;')
