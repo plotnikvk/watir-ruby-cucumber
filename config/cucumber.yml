@@ -1,2 +1,3 @@
-default: --profile chrome --format pretty
+default: --profile chrome --profile html --format pretty
 chrome: DRIVER=chrome
+html: --format html --expand
