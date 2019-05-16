@@ -1,4 +1,4 @@
-default: --format pretty -p html_report --color
+default: --format pretty -p html_report -p jenkins --color
 html_report: --format html --out report.html
 jenkins: --format pretty -p json_report
 json_report: --format json --out report.json
