@@ -2,3 +2,5 @@
 *.bat
 screenshots/
 *.lock
+*.html
+*.json
