@@ -67,6 +67,7 @@ GEM
       dry-types (~> 0.14, >= 0.14)
     faker (1.9.3)
       i18n (>= 0.7)
+    ffi (1.10.0)
     ffi (1.10.0-x64-mingw32)
     gherkin (5.1.0)
     i18n (1.5.3)
@@ -77,6 +78,8 @@ GEM
     multi_json (1.13.1)
     multi_test (0.1.2)
     net_http_ssl_fix (0.0.10)
+    nokogiri (1.10.1)
+      mini_portile2 (~> 2.4.0)
     nokogiri (1.10.1-x64-mingw32)
       mini_portile2 (~> 2.4.0)
     page-object (2.2)
@@ -123,6 +126,7 @@ GEM
     yml_reader (0.7)
 
 PLATFORMS
+  ruby
   x64-mingw32
 
 DEPENDENCIES
@@ -141,4 +145,4 @@ DEPENDENCIES
   webdrivers
 
 BUNDLED WITH
-   2.0.1
+   2.0.2
